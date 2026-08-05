@@ -32,6 +32,10 @@ application {
 
 tasks.named('test') {
     useJUnitPlatform()
+    // POKRECE 20 PROJEKTNIH TESTOVA
+    filter {
+        includeTestsMatching 'rs.medikarton.SazetiProjektniTest'
+    }
     testLogging {
         events 'passed', 'skipped', 'failed'
         showStandardStreams = false
@@ -56,12 +60,24 @@ jacocoTestReport {
     }
 }
 
+// PROVERA POKRIVENOSTI
+tasks.named('check') {
+    dependsOn jacocoTestCoverageVerification
+}
+
 jacocoTestCoverageVerification {
+    dependsOn jacocoTestReport
     violationRules {
         rule {
             limit {
                 counter = 'INSTRUCTION'
                 minimum = 0.80
+            }
+        }
+        rule {
+            limit {
+                counter = 'BRANCH'
+                minimum = 0.75
             }
         }
     }
