@@ -16,3 +16,16 @@ podaci/
 *.iml
 .vscode/
 .DS_Store
+
+# Python alati
+__pycache__/
+*.pyc
+
+# radni materijal koji se ne predaje
+_skica/
+
+# dokumentacija se predaje zasebno, ne verzionise se uz kod
+dokumentacija/
+alati/
+*.docx
+~$*
