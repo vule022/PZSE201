@@ -28,4 +28,5 @@ _skica/
 dokumentacija/
 alati/
 *.docx
+!docs/Medikarton_projektna_dokumentacija_vukasin_rancic_4507.docx
 ~$*

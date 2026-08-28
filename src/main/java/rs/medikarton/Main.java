@@ -37,12 +37,9 @@ public final class Main {
         dogadjaji.registruj(email);
         dogadjaji.registruj(revizija);
 
-        AutentifikacijaServis autentifikacija =
-                new AutentifikacijaServis(fabrika.korisnici(), dogadjaji);
-        ZakazivanjeServis zakazivanje = new ZakazivanjeServis(
-                fabrika.termini(), fabrika.pacijenti(), fabrika.lekari(), dogadjaji);
-        KartonServis karton = new KartonServis(fabrika.pregledi(), fabrika.recepti(),
-                fabrika.nalazi(), fabrika.termini(), fabrika.pacijenti(), dogadjaji);
+        AutentifikacijaServis autentifikacija = new AutentifikacijaServis(fabrika.korisnici(), dogadjaji);
+        ZakazivanjeServis zakazivanje = new ZakazivanjeServis(fabrika.termini(), fabrika.pacijenti(), fabrika.lekari(), dogadjaji);
+        KartonServis karton = new KartonServis(fabrika.pregledi(), fabrika.recepti(), fabrika.nalazi(), fabrika.termini(), fabrika.pacijenti(), dogadjaji);
 
         LocalDateTime sada = LocalDateTime.of(2026, 9, 7, 8, 0);
         LocalDateTime terminVreme = LocalDateTime.of(2026, 9, 8, 9, 0);
@@ -53,10 +50,8 @@ public final class Main {
         fabrika.korisnici().azuriraj(lekarNalog);
         autentifikacija.registruj("admin", "Uprava-Klinike-1!", Uloga.ADMIN);
         System.out.println("  Kreiran nalog: " + lekarNalog);
-        System.out.println("  Prijava sa tacnom lozinkom: "
-                + autentifikacija.prijava("ana.jovic", "Klinika-2026!", sada).isPresent());
-        System.out.println("  Prijava sa netacnom lozinkom: "
-                + autentifikacija.prijava("ana.jovic", "pogresna", sada).isPresent());
+        System.out.println("  Prijava sa tacnom lozinkom: " + autentifikacija.prijava("ana.jovic", "Klinika-2026!", sada).isPresent());
+        System.out.println("  Prijava sa netacnom lozinkom: " + autentifikacija.prijava("ana.jovic", "pogresna", sada).isPresent());
 
         autentifikacija.prijava("ana.jovic", "Klinika-2026!", sada);
         try {
